@@ -1,34 +1,53 @@
 function buyTicket(age, escort) {
-         
+
+    const greenTicket = {
+        value: 7.50,
+        color: "green"
+    }
+    const yellowTicket = {
+        value: 8.60,
+        color: "yellow"
+    }
+    const blueTicket = {
+        value: 5.50,
+        color: "blue"
+    }
+    const invalidTicket = {
+        value: -99,
+        color: "Invalid"
+    }
+
     if (age < 5) {
         if (escort == true) {
-            return 5.50
+            return blueTicket
         } else {
-            return -99
+            return invalidTicket
         }
     }
 
     if (age >= 5 && age < 8) {
-        return 5.50
+        return blueTicket
     }
 
     if (age >= 8 && age < 12) {
-        if (escort == true){
-            return 7.50
+        if (escort == true) {
+            return greenTicket
         } else {
-            return 5.50
+            blueTicket
         }
     }
 
     if (age >= 12 && age < 18) {
-        return 7.50
+        return greenTicket
     }
-    
-    return 8.20
-    
+
+    return yellowTicket
 }
-    
-let myTicket = buyTicket(10, true)
 
 
-console.log(`The value of the ticket is ${myTicket}€.`)
+let myTicket = buyTicket(2, true)
+
+console.log(myTicket)
+
+//console.log(`The value of the ticket is ${myTicket.value}€ and the color is ${myTicket.color}`)
+

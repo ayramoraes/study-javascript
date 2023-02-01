@@ -14,4 +14,12 @@ function printNumbers(number) {
 // A expressão 2 define a condição para a execução do loop (i deve ser menor que number). 
 // A expressão 3 aumenta um valor (i++) cada vez que o bloco de código no loop é executado.   
 
-  printNumbers(10)
+
+function printNumbersIn4(totalNumbers) {
+  
+  for (let i = 1; i <= totalNumbers; i++) { 
+    console.log(i%5);
+  }
+  
+}
+printNumbersIn4(10)

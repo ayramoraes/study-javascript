@@ -2,24 +2,34 @@
 
 getLast(myArray) => deve retornar o ultimo elemento do array
 
-getSize(myArray) => deve retornar a quantidade de elementos do array */
+getSize(myArray) => deve retornar a quantidade de elementos do array 
+
+escrever no console e retornar um valor*/
 
 'use strict';
 
 const friends = ["Joana", "Ciclana", "Beotrana", "Blabla", "Bleble", "Blibli", "Bloblo", "Blublu"]
 
-function getFirst() {
-    return friends[0]
+function getFirstOf(elementsArray) {
+
+    let first = elementsArray[0]
+    console.log(first)
+    return first
+
 }
 
-console.log(getFirst(friends))
-
-function getLast() {
-    return friends[friends.length-1]
+function getLastOf(elementsArray) {
+    let last = elementsArray[elementsArray.length - 1]  
+    console.log(last)
+    return last
 }
-console.log(getLast(friends))
 
-function getSize() {
-    return friends.length
+function getSizeOf(elementsArray) {
+    let size = elementsArray.length
+    console.log(size)
+    return size
 }
-console.log(getSize(friends))
+
+
+let qualFriend = 2
+console.log(friends[qualFriend])

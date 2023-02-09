@@ -7,13 +7,21 @@ function findLargestNumber(arrayNumber) {
 
   let largest = arrayNumber[0]
 
-  for (let i = 1; i < arrayNumber.length; i++) {
-    if (arrayNumber[i] > largest) {
-      largest = arrayNumber[i];
-    }
+  // for (let i = 1; i < arrayNumber.length; i++) {
+  //   if (arrayNumber[i] > largest) {
+  //     largest = arrayNumber[i];
+  //   }
+  // }
+
+
+for (let element of arrayNumber) {
+  if (element > largest) {
+    largest = element
   }
+}
+
   return largest;
 }
 
 
-console.log(findLargestNumber([5, 8,]))
+console.log(findLargestNumber([5, 8, 10, 22]))

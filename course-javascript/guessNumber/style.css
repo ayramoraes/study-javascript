@@ -108,6 +108,10 @@ h1 {
 .btn:hover {
   background-color: #ccc;
 }
+.btn.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
 
 .message {
   margin-bottom: 8rem;

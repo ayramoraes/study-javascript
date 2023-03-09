@@ -11,14 +11,15 @@ const displayMessage = function (message) {
 const disableGame = function () {
   document.querySelector('.check').disabled = true;
   document.querySelector('.check').style.backgroundColor = '#c4c4c4';
-  document.querySelector('.check').style.cursor = 'not-allowed';
+  document.querySelector('.check').style.color = '#A9A9A9';
+  document.querySelector('.check').style.pointerEvents = 'none';
   document.removeEventListener('keydown', handleKeyPress);
 };
 
 const enableGame = function () {
   document.querySelector('.check').disabled = false;
-  document.querySelector('.check').style.backgroundColor = '#60b347';
-  document.querySelector('.check').style.cursor = 'pointer';
+  document.querySelector('.check').style.backgroundColor = '#eee';
+  document.querySelector('.check').style.color = '#222';
   document.addEventListener('keydown', handleKeyPress);
 };
 
@@ -30,9 +31,10 @@ const handleKeyPress = function (event) {
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  // When there is no input
-  if (!guess) {
-    displayMessage('⛔️ No number!');
+
+  // When there is no input, input is not an integer, input is negative or input is greater than 20
+  if (!guess || !Number.isInteger(guess) || guess < 1 || guess > 20) {
+    displayMessage('⛔️ Please enter a valid number only from 1 to 20!');
 
     // When player wins
   } else if (guess === secretNumber) {
@@ -44,6 +46,7 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
+      localStorage.setItem('highscore', highscore);
     }
 
     document.querySelector('.guess').disabled = true;
@@ -86,4 +89,13 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
   document.querySelector('.guess').disabled = false; // Enable input box
-});
+  enableGame(); // Enable check button
+
+
+})
+
+// Load highscore from local storage
+if (localStorage.getItem('highscore')) {
+  highscore = Number(localStorage.getItem('highscore'));
+  document.querySelector('.highscore').textContent = highscore;
+};

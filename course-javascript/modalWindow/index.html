@@ -8,24 +8,35 @@
     <title>Modal window</title>
   </head>
   <body>
-    <button class="show-modal">Show modal 1</button>
-    <button class="show-modal">Show modal 2</button>
-    <button class="show-modal">Show modal 3</button>
-
-    <div class="modal hidden">
+    <button class="show-modal" data-modal="modal1">Show modal 1</button>
+    <div class="modal hidden" id="modal1">
       <button class="close-modal">&times;</button>
       <h1>I'm a modal window 😍</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        Texto 1
       </p>
     </div>
-    <div class="overlay hidden"></div>
+    <div class="overlay hidden" id="overlay1"></div>
+
+    <button class="show-modal" data-modal="modal2">Show modal 2</button>
+    <div class="modal hidden" id="modal2">
+      <button class="close-modal">&times;</button>
+      <h1>I'm a modal window 😍</h1>
+      <p>
+        Texto 2
+      </p>
+    </div>
+    <div class="overlay hidden" id="overlay2"></div>
+
+    <button class="show-modal" data-modal="modal3">Show modal 3</button>
+    <div class="modal hidden" id="modal3">
+      <button class="close-modal">&times;</button>
+      <h1>I'm a modal window 😍</h1>
+      <p>
+        Texto 3
+      </p>
+    </div>
+    <div class="overlay hidden" id="overlay3"></div>
 
     <script src="script.js"></script>
   </body>

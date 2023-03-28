@@ -83,17 +83,33 @@ function rollDice() {
     // Add dice to current score
     currentScore += dice;
     document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-  } else {
-      // Show the number 1 for a short delay before switching to next player
-      setTimeout(() => {
-        // Switch to next player
-        switchPlayer();
-  
-        // Hide the dice after switching to next player
-        diceEl.classList.add('hidden');
-      }, 400);
+
+    // Check if player's score is >= 100
+    if (currentScore + scores[activePlayer] >= 100) {
+      // Finish the game
+      playing = false;
+      diceEl.classList.add('hidden');
+
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
     }
+
+  } else {
+    // Show the number 1 for a short delay before switching to next player
+    setTimeout(() => {
+      // Switch to next player
+      switchPlayer();
+
+      // Hide the dice after switching to next player
+      diceEl.classList.add('hidden');
+    }, 300);
   }
+}
+
 
 btnHold.addEventListener('click', function () {
   if (playing) {

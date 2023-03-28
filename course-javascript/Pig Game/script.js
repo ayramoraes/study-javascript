@@ -42,7 +42,7 @@ const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
- 
+
   player0.classList.toggle('player--active');
   player1.classList.toggle('player--active');
 
@@ -87,6 +87,10 @@ function rollDice() {
     // Check if player's score is >= 100
     if (currentScore + scores[activePlayer] >= 100) {
       // Finish the game
+
+      scores[activePlayer] += currentScore;
+      document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+      
       playing = false;
       diceEl.classList.add('hidden');
 
@@ -96,8 +100,12 @@ function rollDice() {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
-    }
 
+         // Update the crown for the winning player
+      const crown = document.querySelector(`.player--${activePlayer} .emoji`);
+      crown.style.visibility = 'visible';
+    }
+    
   } else {
     // Show the number 1 for a short delay before switching to next player
     setTimeout(() => {
@@ -139,10 +147,10 @@ btnHold.addEventListener('click', function () {
 
     // Loop through all the players and show the crown for the one with the highest score
     document.querySelectorAll('.player')
-    .forEach((player, index) => {
-      const crown = player.querySelector('.emoji');
-      crown.style.visibility = scores[index] === highestScore ? 'visible' : 'hidden';
-    });
+      .forEach((player, index) => {
+        const crown = player.querySelector('.emoji');
+        crown.style.visibility = scores[index] === highestScore ? 'visible' : 'hidden';
+      });
   }
 });
 

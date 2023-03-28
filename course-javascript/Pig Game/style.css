@@ -56,12 +56,25 @@ main {
   margin-bottom: 1rem;
 }
 
+.emoji {
+  position: relative;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
 .score {
   font-size: 8rem;
   font-weight: 300;
   color: #c7365f;
   margin-bottom: auto;
 }
+.player {
+  position: relative;
+}
+
 
 .player--active {
   background-color: rgba(255, 255, 255, 0.4);
@@ -100,6 +113,21 @@ main {
 }
 
 /* ABSOLUTE POSITIONED ELEMENTS */
+.btn--player-0, .btn--player-1 {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+
 .btn {
   position: absolute;
   left: 50%;
@@ -123,7 +151,7 @@ main {
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
-.btn::first-letter {
+.btn--hold::first-letter, .btn--new::first-letter{
   font-size: 2.4rem;
   display: inline-block;
   margin-right: 0.7rem;
@@ -132,11 +160,8 @@ main {
 .btn--new {
   top: 4rem;
 }
-.btn--roll {
-  top: 39.3rem;
-}
 .btn--hold {
-  top: 46.1rem;
+  top: 43.3rem;
 }
 
 .btn:active {
@@ -147,6 +172,7 @@ main {
 .btn:focus {
   outline: none;
 }
+
 
 .dice {
   position: absolute;

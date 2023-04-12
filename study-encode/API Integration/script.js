@@ -3,6 +3,9 @@ const randomActivityBtn = document.getElementById("random-activity-btn");
 const activityParagraph = document.getElementById("activity");
 const categorySelect = document.getElementById("category-select");
 const categoryBtn = document.getElementById("category-btn");
+const activityCategoryParagraph = document.getElementById("activity-category");
+const activityTypeSelect = document.getElementById("activity-type-select");
+const activityTypeBtn = document.getElementById("activity-type-btn");
 
 // Populate the category select element
 const categories = [
@@ -40,9 +43,9 @@ function getRandomActivity() {
 function searchActivityByCategory(event) {
   event.preventDefault();
   const category = categorySelect.value;
+  const type = activityTypeSelect.value;
   if (category) {
-    const activityCategoryParagraph = document.getElementById("activity-category");
-    fetch(`${url}activity?type=${category}`)
+    fetch(`${url}activity?type=${category}&participants=${type}`)
       .then((response) => response.json())
       .then((data) => {
         activityCategoryParagraph.textContent = data.activity;
@@ -52,7 +55,6 @@ function searchActivityByCategory(event) {
       });
   }
 }
-
 
 randomActivityBtn.addEventListener("click", getRandomActivity);
 categoryBtn.addEventListener("click", searchActivityByCategory);

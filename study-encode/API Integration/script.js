@@ -1,73 +1,58 @@
-
-const url = "https://www.boredapi.com/api/"
+const url = "https://www.boredapi.com/api/";
 const randomActivityBtn = document.getElementById("random-activity-btn");
 const activityParagraph = document.getElementById("activity");
+const categorySelect = document.getElementById("category-select");
+const categoryBtn = document.getElementById("category-btn");
 
-const activityCategorySelect = document.getElementById("activity-category");
-const activityParticipantsInput = document.getElementById("activity-participants");
-const searchActivityBtn = document.getElementById("search-activity-btn");
-const activityList = document.getElementById("activity-list");
+// Populate the category select element
+const categories = [
+  { value: "", label: "--Select a category--" },
+  { value: "education", label: "Education" },
+  { value: "recreational", label: "Recreational" },
+  { value: "social", label: "Social" },
+  { value: "diy", label: "DIY" },
+  { value: "charity", label: "Charity" },
+  { value: "cooking", label: "Cooking" },
+  { value: "relaxation", label: "Relaxation" },
+  { value: "music", label: "Music" },
+  { value: "busywork", label: "Busywork" },
+];
 
-function getRandomActivity() {
-  fetch(`${url}activity/`)
-    .then(response => response.json())
-    .then(data => {
-      activityParagraph.textContent = data.activity;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-randomActivityBtn.addEventListener("click", getRandomActivity);
-
-function searchActivities(category, participants) {
-  let apiUrl = `${url}activity/`;
-  
-  // Add category and participants query parameters to the URL if provided
-  if (category) {
-    apiUrl += `?type=${category}`;
-  }
-  if (participants) {
-    apiUrl += `&participants=${participants}`;
-  }
-  
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      // Clear the previous search results
-      activityList.innerHTML = "";
-      
-      // Display the search results
-      if (data.activity) {
-        const activityItem = document.createElement("li");
-        activityItem.textContent = data.activity;
-        activityList.appendChild(activityItem);
-      } else {
-        const noResultsItem = document.createElement("li");
-        noResultsItem.textContent = "No activities found.";
-        activityList.appendChild(noResultsItem);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-searchActivityBtn.addEventListener("click", event => {
-  event.preventDefault();
-  const category = activityCategorySelect.value;
-  const participants = activityParticipantsInput.value;
-  searchActivities(category, participants);
+categories.forEach((category) => {
+  const option = document.createElement("option");
+  option.value = category.value;
+  option.textContent = category.label;
+  categorySelect.appendChild(option);
 });
 
-/* axios.get("https://www.boredapi.com/api/activity/")
-  .then(response => {
-    const data = response.data;
-    activityParagraph.textContent = data.activity;
-  })
-  
-  add the axios script to your HTML file before the script that contains this code.
+// Retrieve a random activity
+function getRandomActivity() {
+  fetch(`${url}activity/`)
+    .then((response) => response.json())
+    .then((data) => {
+      activityParagraph.textContent = data.activity;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="your-script.js"></script>*/
+function searchActivityByCategory(event) {
+  event.preventDefault();
+  const category = categorySelect.value;
+  if (category) {
+    const activityCategoryParagraph = document.getElementById("activity-category");
+    fetch(`${url}activity?type=${category}`)
+      .then((response) => response.json())
+      .then((data) => {
+        activityCategoryParagraph.textContent = data.activity;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+}
+
+
+randomActivityBtn.addEventListener("click", getRandomActivity);
+categoryBtn.addEventListener("click", searchActivityByCategory);

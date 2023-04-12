@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Random Activity Generator</title>
-</head>
-
-<body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Find Things to Do When You're Bored</title>
+  </head>
+  <body>
     <main>
-        <div id="random-activity">
-            <h1>Find things to do when you're bored</h1>
-            <button id="random-activity-btn">Get Random Activity</button>
-            <p id="activity"></p>
-        </div>
-
-        <div id="activity-search">
-            <h2>Search for Activities</h2>
-            <form>
-                <label for="activity-category">Category:</label>
-                <select id="activity-category">
-                    <option value="">All Categories</option>
-                    <option value="education">Education</option>
-                    <option value="recreational">Recreational</option>
-                    <option value="social">Social</option>
-                    <option value="diy">DIY</option>
-                    <option value="charity">Charity</option>
-                    <option value="cooking">Cooking</option>
-                    <option value="relaxation">Relaxation</option>
-                    <option value="music">Music</option>
-                    <option value="busywork">Busy Work</option>
-                </select>
-                <br><br>
-                <label for="activity-participants">Participants:</label>
-                <input type="number" id="activity-participants" name="activity-participants" min="1" max="10">
-                <br><br>
-                <button type="submit" id="search-activity-btn">Search</button>
-            </form>
-            <div id="search-results">
-                <h3>Search Results:</h3>
-                <ul id="activity-list"></ul>
-            </div>
-        </div>
-
+      <div id="random-activity">
+        <h1>Find things to do when you're bored</h1>
+        <button id="random-activity-btn">Get Random Activity</button>
+        <p id="activity"></p>
+      </div>
+  
+      <div id="activity-by-category">
+        <h2>Find activities by category</h2>
+        <form id="category-form">
+          <label for="category-select">Category:</label>
+          <select id="category-select" name="category"></select>
+          <button id="category-btn">Search</button>
+        </form>
+        <p id="activity-category"></p>
+      </div>
     </main>
+  
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

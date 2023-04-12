@@ -48,7 +48,11 @@ function searchActivityByCategory(event) {
     fetch(`${url}activity?type=${category}&participants=${type}`)
       .then((response) => response.json())
       .then((data) => {
-        activityCategoryParagraph.textContent = data.activity;
+        if (data.activity) {
+          activityCategoryParagraph.textContent = data.activity;
+        } else {
+          activityCategoryParagraph.textContent = "No activity available for this category and type.";
+        }
       })
       .catch((error) => {
         console.error(error);

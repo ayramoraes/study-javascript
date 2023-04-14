@@ -44,6 +44,7 @@ function searchActivityByCategory(event) {
   event.preventDefault();
   const category = categorySelect.value;
   const type = activityTypeSelect.value;
+  
   if (category) {
     fetch(`${url}activity?type=${category}&participants=${type}`)
       .then((response) => response.json())

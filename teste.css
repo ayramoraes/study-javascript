@@ -7,9 +7,6 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
 }
 
 body {
@@ -93,6 +90,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   flex: 50%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   transition: all 0.75s;
@@ -105,6 +103,7 @@ button:last-child {
 button:hover {
   background-color: #555;
 }
+
 /* Elements */
 #random-activity-btn {
   width: 65%;
@@ -152,7 +151,7 @@ button:hover {
   right: 2rem;
   font-size: 5rem;
   color: #333;
-  border: none;
+    border: none;
   background: none;
 }
 

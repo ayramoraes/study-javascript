@@ -10,7 +10,7 @@ function openModal(index) {
   overlay.classList.remove('hidden');
 };
 
-function closeAllModals() {
+function closeModal() {
   modals.forEach((modal) => {
     modal.classList.add('hidden')
   })
@@ -25,19 +25,19 @@ buttonsOpenModal.forEach(function (button, index) {
 
 buttonsCloseModals.forEach(function (button) {
   button.addEventListener('click', function () {
-    closeAllModals();
+    closeModal();
   });
 });
 
 overlay.addEventListener('click', function () {
-  closeAllModals();
+  closeModal();
 });
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
-    closeAllModals();
+    closeModal();
     document.activeElement.blur()
   }
 });
 
-closeAllModals();
+closeModal();

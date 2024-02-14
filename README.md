@@ -4,7 +4,7 @@ This repository is a collection of my progress, learning, and practice in the wo
 
 # Projects and Exercises
 ## JavaScript Courses
-•** course-javascript:** This directory contains my notes and projects from the JavaScript course I took. It showcases my improved skills in JavaScript.
+•**course-javascript:** This directory contains my notes and projects from the JavaScript course I took. It showcases my improved skills in JavaScript.
 
 ## CSS Styling
 • **improves in CSS style:** In this directory, you can see my progression in CSS styling over time.
